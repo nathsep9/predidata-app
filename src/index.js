@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./index.css";
@@ -13,12 +14,15 @@ const theme = createTheme({
       main: green[700],
     },
   },
+  spacing: 8,
 });
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

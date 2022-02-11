@@ -1,37 +1,14 @@
 import { HomeWorkSharp, Person } from "@mui/icons-material";
-import { AppBar, Grid, Box, Toolbar, Typography, Tooltip } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Grid, Box, Tooltip, Container } from "@mui/material";
 
 import ButtonGraph from "components/ButtonGraph";
+import { LinkBehavior } from "components/LinkBehavior";
+import { ROUTES } from "constantsApp";
 import Cards from "../components/Cards";
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(1),
-  },
-  button: {
-    backgroundColor: "#006850",
-    backgroundSize: 145,
-    justifyContent: "center",
-    display: "flex",
-  },
-  description: {
-    fontSize: "1.5rem",
-  },
-}));
-
 export function Main() {
-  const classes = useStyles();
-
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            PrediData
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <Container>
       <Grid
         container
         spacing={4}
@@ -39,7 +16,7 @@ export function Main() {
         marginTop={"10px"}
         justifyContent="center"
       >
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <Tooltip
             title="Con PrediData puedes administrar la información de los propietarios y agregar nuevos propietarios"
             justifyContent="center"
@@ -53,7 +30,12 @@ export function Main() {
               }
               button={
                 <Grid container justifyContent={"center"}>
-                  <ButtonGraph variant="contained" size="small">
+                  <ButtonGraph
+                    variant="contained"
+                    size="small"
+                    component={LinkBehavior}
+                    href={ROUTES.owners}
+                  >
                     Ver Propietarios
                   </ButtonGraph>
                 </Grid>
@@ -61,7 +43,7 @@ export function Main() {
             />
           </Tooltip>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <Tooltip
             title="Con PreDita puedes administrar la información de los predios y agregar nuevas propiedades "
             placeholder="top"
@@ -74,7 +56,12 @@ export function Main() {
               }
               button={
                 <Grid container justifyContent={"center"}>
-                  <ButtonGraph variant="contained" size="small">
+                  <ButtonGraph
+                    variant="contained"
+                    size="small"
+                    component={LinkBehavior}
+                    href={ROUTES.properties}
+                  >
                     Ver Propiedades
                   </ButtonGraph>
                 </Grid>
@@ -83,6 +70,6 @@ export function Main() {
           </Tooltip>
         </Grid>
       </Grid>
-    </>
+    </Container>
   );
 }
