@@ -19,7 +19,6 @@ export function Main() {
         <Grid item xs={12} md={4}>
           <Tooltip
             title="Con PrediData puedes administrar la información de los propietarios y agregar nuevos propietarios"
-            justifyContent="center"
             placeholder="top"
           >
             <Cards

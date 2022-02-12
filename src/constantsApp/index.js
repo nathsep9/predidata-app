@@ -2,7 +2,10 @@ export const ROUTES = {
   main: "/",
   owners: "/owners",
   properties: "/properties",
+  owner: "/owners/:id",
 };
+
+export const createOwnerRoute = (id) => `/owners/${id}`;
 
 export const TYPE_DOCUMENTS = {
   CC: 2,
@@ -29,3 +32,6 @@ export const typeDocuments = [
     label: "Número de Identificación Tributaria",
   },
 ];
+
+export const findTypeDocument = (id) =>
+  typeDocuments.find(({ value }) => value === id);

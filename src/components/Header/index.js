@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Navegation = () => {
+export const Header = () => {
   const classes = useStyles();
 
   return (
