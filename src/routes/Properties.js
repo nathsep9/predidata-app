@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
-import OwnersForm from "components/owners/Form";
-import OwnersTable from "components/owners/Table";
-import { getOwners } from "services/owners";
+import client from "client";
+import PropertiesForm from "components/properties/Form";
+import PropertiesTable from "components/properties/Table";
+import { useCallback, useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Owners = () => {
+export const Properties = () => {
   const [data, setData] = useState([]);
   const classes = useStyles();
   const loadData = useCallback(async () => {
-    const res = await getOwners();
+    const res = await client.get("/properties");
     setData(res.data);
   }, []);
   useEffect(() => {
@@ -27,14 +26,14 @@ export const Owners = () => {
     <Container maxWidth="lg" className={classes.root}>
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs="auto">
-          <OwnersForm
-            onSave={(owner) => {
-              setData([...data, owner]);
+          <PropertiesForm
+            onSave={(property) => {
+              setData([...data, property]);
             }}
           />
         </Grid>
         <Grid item xs={12}>
-          <OwnersTable data={data} reload={loadData} />
+          <PropertiesTable data={data} reload={loadData} />
         </Grid>
       </Grid>
     </Container>

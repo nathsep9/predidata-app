@@ -6,6 +6,7 @@ import { ROUTES } from "constantsApp";
 import { Main } from "./routes/Main";
 import { Owners } from "routes/Owners";
 import { Owner } from "routes/Owner";
+import { Properties } from "routes/Properties";
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
       <Header />
       <Routes>
         <Route path={ROUTES.main} element={<Main />} />
-        <Route path={ROUTES.owners} element={<Owners />} />{" "}
+        <Route path={ROUTES.owners} element={<Owners />} />
         <Route path={ROUTES.owner} element={<Owner />} />
-        <Route path={ROUTES.properties} element={<div>Pooop</div>} />
+        <Route path={ROUTES.properties} element={<Properties />} />
         <Route path="*" element={<Navigate to={ROUTES.main} />} />
       </Routes>
     </div>
