@@ -12,7 +12,8 @@ import { IconButton } from "@mui/material";
 import { DeleteAction } from "./actions/DeleteAction";
 import { LinkBehavior } from "components/LinkBehavior";
 import { createOwnerRoute, typeDocumentsMap } from "constantsApp";
-export function OwnersTable({ data, reload }) {
+
+export function OwnersTable({ data, onDelete }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -48,9 +49,8 @@ export function OwnersTable({ data, reload }) {
                     <VisibilityIcon />
                   </IconButton>
                   <DeleteAction
-                    row={row}
                     onDelete={() => {
-                      reload();
+                      onDelete?.(row);
                     }}
                   />
                 </TableCell>

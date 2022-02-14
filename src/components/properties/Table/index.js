@@ -17,9 +17,9 @@ import {
   TYPE_PROPERTIES,
 } from "constantsApp";
 
-export function PropertiesTable({ data, reload }) {
+export function PropertiesTable({ data, onDelete }) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -60,9 +60,8 @@ export function PropertiesTable({ data, reload }) {
                     <VisibilityIcon />
                   </IconButton>
                   <DeleteAction
-                    row={row}
                     onDelete={() => {
-                      reload();
+                      onDelete?.(row);
                     }}
                   />
                 </TableCell>

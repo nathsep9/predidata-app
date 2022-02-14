@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 
 import OwnersForm from "components/owners/Form";
 import OwnersTable from "components/owners/Table";
-import { getOwners } from "services/owners";
+import { getOwners, deleteOwner } from "services/owners";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +22,7 @@ export const Owners = () => {
   useEffect(() => {
     loadData();
   }, [loadData]);
-  console.log(data);
+
   return (
     <Container maxWidth="lg" className={classes.root}>
       <Grid container spacing={2} justifyContent="center">
@@ -34,7 +34,13 @@ export const Owners = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <OwnersTable data={data} reload={loadData} />
+          <OwnersTable
+            data={data}
+            onDelete={async (row) => {
+              await deleteOwner(row.id);
+              loadData();
+            }}
+          />
         </Grid>
       </Grid>
     </Container>

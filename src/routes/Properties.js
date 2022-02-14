@@ -4,6 +4,7 @@ import client from "client";
 import PropertiesForm from "components/properties/Form";
 import PropertiesTable from "components/properties/Table";
 import { useCallback, useEffect, useState } from "react";
+import { deleteProperty } from "services/properties";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,13 @@ export const Properties = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <PropertiesTable data={data} reload={loadData} />
+          <PropertiesTable
+            data={data}
+            onDelete={async (row) => {
+              await deleteProperty(row.id);
+              loadData();
+            }}
+          />
         </Grid>
       </Grid>
     </Container>

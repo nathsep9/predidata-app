@@ -1,15 +1,12 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
-import client from "client";
 
-export const DeleteAction = ({ row, onDelete }) => {
+export const DeleteAction = ({ onDelete }) => {
   return (
     <IconButton
       color="warning"
       onClick={() => {
-        client.delete(`/properties/${row.id}`).then(() => {
-          onDelete();
-        });
+        onDelete();
       }}
     >
       <DeleteIcon />
