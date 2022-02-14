@@ -5,17 +5,12 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IconButton } from "@mui/material";
 
 import { DeleteAction } from "./actions/DeleteAction";
 import { LinkBehavior } from "components/LinkBehavior";
-import {
-  createPropertyRoute,
-  typePropertiesMap,
-  TYPE_PROPERTIES,
-} from "constantsApp";
+import { createPropertyRoute, typePropertiesMap } from "constantsApp";
 import { getLocation } from "utils";
 
 export function PropertiesTable({ data, onDelete }) {

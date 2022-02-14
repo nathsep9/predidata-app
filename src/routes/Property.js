@@ -9,7 +9,7 @@ import { Navigate, useParams } from "react-router-dom";
 
 import LoadingPage from "components/LoadingPage";
 import { Container, Grid, Paper } from "@mui/material";
-import { ROUTES, typePropertiesMap, TYPE_PROPERTIES } from "constantsApp";
+import { ROUTES, typePropertiesMap } from "constantsApp";
 import { deletePropertyOwner, getProperty } from "services";
 import { AddOwners } from "components/Property";
 import OwnersTable from "components/owners/Table";
@@ -36,13 +36,13 @@ export function Property() {
 
   if (loading) return <LoadingPage />;
   if (!data) return <Navigate to={ROUTES.properties} />;
-  const { name, address, type_property, owners, real_estate_registration } =
-    data;
+  const { type_property, owners, real_estate_registration } = data;
   const type = typePropertiesMap.get(type_property);
   const arrayColors = Object.values(colors);
   const random = Math.floor(Math.random() * arrayColors.length);
   const randomColor = arrayColors[random];
 
+  const location = getLocation(data);
   return (
     <Container
       sx={{
@@ -53,12 +53,12 @@ export function Property() {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: randomColor[500] }} aria-label="recipe">
-              {name[0]}
+              {location[0]}
             </Avatar>
           }
           title={
             <Typography variant="h6" gutterBottom>
-              {name}
+              {location}
             </Typography>
           }
         />
@@ -71,7 +71,7 @@ export function Property() {
               },
               {
                 label: "Ubicación",
-                value: getLocation(data),
+                value: location,
               },
               {
                 label: "Tipo del predio",
