@@ -1,21 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { green } from "@mui/material/colors";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: green[700],
-    },
-  },
-  spacing: 8,
-});
+import { theme } from "./theme";
 
 ReactDOM.render(
   <React.StrictMode>
