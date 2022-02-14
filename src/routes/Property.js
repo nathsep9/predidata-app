@@ -13,6 +13,7 @@ import { ROUTES, typePropertiesMap, TYPE_PROPERTIES } from "constantsApp";
 import { deletePropertyOwner, getProperty } from "services";
 import { AddOwners } from "components/Property";
 import OwnersTable from "components/owners/Table";
+import { getLocation } from "utils";
 
 export function Property() {
   const { id } = useParams();
@@ -70,7 +71,7 @@ export function Property() {
               },
               {
                 label: "Ubicación",
-                value: type_property === TYPE_PROPERTIES.URBAN ? address : name,
+                value: getLocation(data),
               },
               {
                 label: "Tipo del predio",

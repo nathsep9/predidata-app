@@ -16,6 +16,7 @@ import {
   typePropertiesMap,
   TYPE_PROPERTIES,
 } from "constantsApp";
+import { getLocation } from "utils";
 
 export function PropertiesTable({ data, onDelete }) {
   return (
@@ -35,8 +36,7 @@ export function PropertiesTable({ data, onDelete }) {
           {data.map((row) => {
             const { type_property: type } = row;
             const typeProperty = typePropertiesMap.get(type);
-            const name =
-              type === TYPE_PROPERTIES.URBAN ? row.address : row.name;
+            const name = getLocation(row);
             return (
               <TableRow
                 key={row.id}

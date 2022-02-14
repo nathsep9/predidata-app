@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getOwnerPropertiesAvailable } from "services";
+import { getLocation } from "utils";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -59,9 +60,9 @@ export default function PropertiesField({ value = [], onChange, owner }) {
         input={<OutlinedInput label="Name" />}
         MenuProps={MenuProps}
       >
-        {properties.map(({ id, name }) => (
+        {properties.map(({ id, ...rest }) => (
           <MenuItem key={id} value={id} style={getStyles(id, value, theme)}>
-            {name}
+            {getLocation(rest)}
           </MenuItem>
         ))}
       </Select>
